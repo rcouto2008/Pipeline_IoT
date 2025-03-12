@@ -25,10 +25,15 @@ O objetivo deste projeto é criar um pipeline de dados completo, desde a coleta 
 
 pipeline-iot/
 ├── dashboard.py # Script do dashboard Streamlit
+
 ├── pipeline.py # Script para processar e carregar os dados
+
 ├── IOT-temp.csv # Conjunto de dados de leituras de temperatura
+
 ├── requirements.txt # Dependências do projeto
+
 ├── README.md # Documentação do projeto
+
 └── venv/ # Ambiente virtual Python
 
 
@@ -83,17 +88,17 @@ O dashboard estará disponível em: http://localhost:8501.
 O dashboard contém três gráficos interativos:
 
 1. Média de Temperatura por Dispositivo
-Mostra a temperatura média de cada dispositivo IoT.
-
-O dispositivo sala-01 tem a maior temperatura média (23.5°C), possivelmente devido à falta de ventilação.
+   Mostra a temperatura média de cada dispositivo IoT.
+   O dispositivo a maior temperatura média (23.5°C).
 
 2. Leituras por Hora do Dia
-Exibe a contagem de leituras de temperatura por hora.
- O horário com maior número de leituras é às 14h, com 7248 leituras, indicando um pico de atividade.
+   Exibe a contagem de leituras de temperatura por hora.
 
-3. Temperaturas Máximas e Mínimas por Dia
-Apresenta as temperaturas máximas e mínimas registradas a cada dia.
-A temperatura máxima registrada foi 30°C, enquanto a mínima foi 15°C, mostrando variações significativas.
+   O horário com maior número de leituras é às 14h, com 7248 leituras, indicando um pico de atividade.
+
+4. Temperaturas Máximas e Mínimas por Dia
+   Apresenta as temperaturas máximas e mínimas registradas a cada dia.
+   A temperatura máxima registrada foi 30°C, enquanto a mínima foi 15°C, mostrando variações significativas.
 
 ## 🗂️ Views SQL
 
@@ -141,15 +146,18 @@ As leituras mostram que as temperaturas tendem a subir durante o dia e cair à n
 
 1. Média de Temperatura por Dispositivo
    
-![newplot (1)](https://github.com/user-attachments/assets/356216cf-ca0d-4892-a680-d2c32b54f061)
+![newplot (1)](https://github.com/user-attachments/assets/ce1db83b-e096-41e3-8a39-9fd6929daa7a)
+
 
 
 3. Leituras por Hora do Dia
    
-![newplot (2)](https://github.com/user-attachments/assets/2e100f85-97e2-4e8b-ade7-4c95679065a0)
+![newplot (2)](https://github.com/user-attachments/assets/f84f0ffa-e589-40de-9010-5d97397820fc)
+
 
 
 5. Temperaturas Máximas e Mínimas por Dia
    
-![newplot (3)](https://github.com/user-attachments/assets/4e14c4bc-2b90-477a-ad61-f6f4bba59c57)
+![newplot (3)](https://github.com/user-attachments/assets/bdc46fb5-0085-46d4-b407-0ac4ca918562)
+
 

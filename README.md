@@ -34,12 +34,6 @@ pipeline-iot/
 ├── README.md             # Documentação do projeto
 
 └── screenshots/          # Capturas de tela do dashboard
- 
-.............├── avg_temp.png
-    
-.............├── leituras_por_hora.png
-     
-.............└── temp_max_min.png
 
 
 ---

@@ -1,12 +1,11 @@
 # 🚀 Pipeline de Dados com IoT e Docker
 
-Este projeto é um pipeline de dados que processa leituras de temperatura de dispositivos IoT, armazena os dados em um banco PostgreSQL usando Docker e visualiza os dados em um dashboard interativo com Streamlit.
-
+Este projeto é um dashboard para visualização de dados de temperatura coletados por dispositivos IoT. Ele utiliza Streamlit para a interface gráfica, PostgreSQL para armazenamento dos dados e Plotly para a criação de gráficos interativos.
 ---
 
 ## 🎯 Objetivo
 
-O objetivo deste projeto é criar um pipeline de dados completo, desde a coleta e armazenamento até a visualização, utilizando tecnologias modernas como Docker, PostgreSQL, Python e Streamlit.
+O objetivo deste projeto é fornecer uma solução completa para monitorar e analisar dados de temperatura coletados por dispositivos IoT, desde a coleta e armazenamento até a visualização em um dashboard interativo.
 
 ---
 
@@ -24,17 +23,23 @@ O objetivo deste projeto é criar um pipeline de dados completo, desde a coleta 
 ## 📂 Estrutura do Projeto
 
 pipeline-iot/
-├── dashboard.py # Script do dashboard Streamlit
+├── dashboard.py          # Script do dashboard Streamlit
 
-├── pipeline.py # Script para processar e carregar os dados
+├── pipeline.py           # Script para processar e carregar os dados
 
-├── IOT-temp.csv # Conjunto de dados de leituras de temperatura
+├── IOT-temp.csv          # Conjunto de dados de leituras de temperatura
 
-├── requirements.txt # Dependências do projeto
+├── requirements.txt      # Dependências do projeto
 
-├── README.md # Documentação do projeto
+├── README.md             # Documentação do projeto
 
-└── venv/ # Ambiente virtual Python
+└── screenshots/          # Capturas de tela do dashboard
+ 
+.............├── avg_temp.png
+    
+.............├── leituras_por_hora.png
+     
+.............└── temp_max_min.png
 
 
 ---
@@ -88,17 +93,20 @@ O dashboard estará disponível em: http://localhost:8501.
 O dashboard contém três gráficos interativos:
 
 1. Média de Temperatura por Dispositivo
-   Mostra a temperatura média de cada dispositivo IoT.
-   O dispositivo a maior temperatura média (23.5°C).
+Mostra a temperatura média de cada dispositivo IoT.
+
+Insight: Identifica quais dispositivos estão registrando temperaturas mais altas ou mais baixas.
 
 2. Leituras por Hora do Dia
-   Exibe a contagem de leituras de temperatura por hora.
+Exibe a contagem de leituras de temperatura por hora.
 
-   O horário com maior número de leituras é às 14h, com 7248 leituras, indicando um pico de atividade.
+Insight: Revela os horários de pico de atividade dos dispositivos.
 
-4. Temperaturas Máximas e Mínimas por Dia
-   Apresenta as temperaturas máximas e mínimas registradas a cada dia.
-   A temperatura máxima registrada foi 30°C, enquanto a mínima foi 15°C, mostrando variações significativas.
+3. Temperaturas Máximas e Mínimas por Dia
+Apresenta as temperaturas máximas e mínimas registradas a cada dia.
+
+Insight: Ajuda a identificar variações extremas de temperatura.
+
 
 ## 🗂️ Views SQL
 
@@ -125,22 +133,87 @@ Foram criadas as seguintes views no PostgreSQL para facilitar as análises:
    FROM temperature_readings
    GROUP BY data;
 
+
 ## 🔍 Insights
+
 Temperaturas Mais Altas em Determinados Dispositivos:
 
-O dispositivo sala-01 registrou a maior temperatura média (23.5°C). Isso pode indicar que essa sala está mais quente que as outras, possivelmente devido à falta de ventilação ou à localização do dispositivo.
+1. Temperaturas Mais Altas em Determinados Dispositivos
+   O dispositivo 01 registrou a maior temperatura média (23.5°C), enquanto o dispositivo 03 teve a menor média (19.8°C).
 
-Horário de Pico de Leituras:
+   O que isso significa?
 
-O período entre 10h e 14h concentra a maioria das leituras, com um pico às 14h (7248 leituras). Isso sugere que os dispositivos estão mais ativos durante a tarde, o que pode estar relacionado ao aumento do uso de equipamentos ou à maior movimentação de pessoas.
+   O dispositivo 01 pode estar mais quente devido à falta de ventilação, exposição ao sol ou alta ocupação.
 
-Variações Significativas de Temperatura:
+   O dispositivo 03 pode estar em uma área mais fresca ou ter um sistema de climatização mais eficiente.
 
-A temperatura máxima registrada foi 30°C, enquanto a mínima foi 15°C. Essa grande variação pode ser útil para identificar dias com condições extremas e ajustar sistemas de climatização ou alertas.
+   Ação sugerida:
 
-Padrões de Temperatura ao Longo do Dia:
+   Verificar a localização e o funcionamento dos dispositivos 01.
 
-As leituras mostram que as temperaturas tendem a subir durante o dia e cair à noite, seguindo um padrão esperado. No entanto, picos inesperados podem indicar problemas, como falhas nos dispositivos ou mudanças bruscas no ambiente.
+   Considerar a instalação de ventiladores ou ajustes no sistema de ventilação.
+
+2. Horário de Pico de Leituras
+   O período entre 10h e 14h concentra a maioria das leituras, com um pico às 14h (7248 leituras).
+
+   O que isso significa?
+
+   Esse horário coincide com o período de maior atividade humana e uso de equipamentos.
+
+   Pode indicar um aumento na demanda de energia ou na carga de trabalho dos dispositivos.
+
+   Ação sugerida:
+
+   Monitorar o desempenho dos dispositivos durante esse período para evitar sobrecargas.
+
+   Avaliar a necessidade de ajustes no agendamento de tarefas para distribuir a carga.
+
+3. Variações Significativas de Temperatura
+   A temperatura máxima registrada foi 30°C, enquanto a mínima foi 15°C.
+
+   O que isso significa?
+ 
+   Essa grande variação pode indicar dias com condições climáticas extremas ou falhas nos dispositivos.
+
+   Picos de temperatura podem afetar o conforto térmico e o consumo de energia.
+
+   Ação sugerida:
+
+   Implementar alertas para temperaturas fora da faixa esperada.
+
+   Verificar a calibração dos dispositivos em dias com variações extremas.
+
+4. Padrões de Temperatura ao Longo do Dia
+   As temperaturas tendem a subir durante o dia e cair à noite, seguindo um padrão esperado.
+
+   O que isso significa?
+
+   Esse comportamento é consistente com a variação natural da temperatura ambiente.
+
+   Picos inesperados durante a noite podem indicar problemas, como falhas nos dispositivos ou mudanças bruscas no ambiente.
+
+   Ação sugerida:
+
+   Monitorar padrões anormais de temperatura durante a noite.
+
+   Investigar possíveis causas, como ambientes internos e externos como portas, janelas abertas ,exposição ao tempo .
+
+5. Comparação Entre Dispositivos
+   Dispositivos em  diferentes lugares mostram variações significativas na temperatura média.
+
+   O que isso significa?
+
+   A localização dos dispositivos pode influenciar diretamente as leituras.
+
+   dispositivos com maior exposição ao sol ou menor ventilação tendem a registrar temperaturas mais altas.
+
+   Ação sugerida:
+
+   Reavaliar a posição dos dispositivos para garantir leituras mais precisas.
+
+   Considerar a instalação de sensores adicionais em áreas críticas.
+   
+
 
 ## 📸 Capturas de Tela Dashboard
 
@@ -159,5 +232,4 @@ As leituras mostram que as temperaturas tendem a subir durante o dia e cair à n
 5. Temperaturas Máximas e Mínimas por Dia
    
 ![newplot (3)](https://github.com/user-attachments/assets/bdc46fb5-0085-46d4-b407-0ac4ca918562)
-
 

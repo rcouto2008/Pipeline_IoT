@@ -1,7 +1,7 @@
-# 🚀 Pipeline de Dados com IoT e Docker
+## 🚀 Pipeline de Dados com IoT e Docker
 
 Este projeto é um dashboard para visualização de dados de temperatura coletados por dispositivos IoT. Ele utiliza Streamlit para a interface gráfica, PostgreSQL para armazenamento dos dados e Plotly para a criação de gráficos interativos.
----
+
 
 ## 🎯 Objetivo
 
